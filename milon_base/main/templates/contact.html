@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4 text-center">Get in Touch</h2>
+                <div class="row g-5">
+                    <!-- Contact Form -->
+                    <div class="col-md-7">
+                        <form method="POST" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            
+                            {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% endif %}
+
+                            <div class="mb-3">
+                                <label for="id_name" class="form-label">Your Name</label>
+                                <input type="text" 
+                                       class="form-control {% if form.name.errors %}is-invalid{% endif %}" 
+                                       id="id_name" 
+                                       name="name" 
+                                       required
+                                       value="{{ form.name.value|default:'' }}">
+                                <div class="invalid-feedback">
+                                    {{ form.name.errors|striptags }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="id_email" class="form-label">Email Address</label>
+                                <input type="email" 
+                                       class="form-control {% if form.email.errors %}is-invalid{% endif %}" 
+                                       id="id_email" 
+                                       name="email" 
+                                       required
+                                       value="{{ form.email.value|default:'' }}">
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors|striptags }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="id_subject" class="form-label">Subject</label>
+                                <input type="text" 
+                                       class="form-control {% if form.subject.errors %}is-invalid{% endif %}" 
+                                       id="id_subject" 
+                                       name="subject" 
+                                       required
+                                       value="{{ form.subject.value|default:'' }}">
+                                <div class="invalid-feedback">
+                                    {{ form.subject.errors|striptags }}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="id_message" class="form-label">Message</label>
+                                <textarea class="form-control {% if form.message.errors %}is-invalid{% endif %}" 
+                                          id="id_message" 
+                                          name="message" 
+                                          rows="5" 
+                                          required>{{ form.message.value|default:'' }}</textarea>
+                                <div class="invalid-feedback">
+                                    {{ form.message.errors|striptags }}
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Send Message <i class="bi bi-send ms-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Contact Information</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3">
+                                        <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
+                                        Rajshahi,Bangladesh
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-envelope-fill me-2 text-primary"></i>
+                                        aynalhaque7411@gmail.com
+                                    </li>
+                                    <li class="mb-3">
+                                        <i class="bi bi-phone-fill me-2 text-primary"></i>
+                                        +8801908-214958
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-clock-fill me-2 text-primary"></i>
+                                        Mon-Fri: 9AM - 5PM
+                                    </li>
+                                </ul>
+                                <hr>
+                                <div class="social-links">
+                                    <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                        <i class="bi bi-github"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                        <i class="bi bi-linkedin"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
