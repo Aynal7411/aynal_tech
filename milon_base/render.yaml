@@ -6,7 +6,7 @@ services:
       poetry install --no-dev
       poetry run python manage.py collectstatic --no-input
     startCommand: "poetry run gunicorn milon_base.wsgi:application"
-    pythonVersion: "3.11.11"
+    pythonVersion: 3.12
     envVars:
       - key: DATABASE_URL
         fromDatabase:
